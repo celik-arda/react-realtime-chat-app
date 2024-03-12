@@ -20,7 +20,13 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
     console.log("- user connected :", socket.id);
 
-    io.on("disconnect", ()=> {
+    // create an socket event for joining to room
+    socket.on("joining_room", (data) => {
+        socket.join(data);
+        console.log("DATAAAA : ",data)
+    })
+
+    socket.on("disconnect", ()=> {
         console.log("- user disconnected");
     });
 })
