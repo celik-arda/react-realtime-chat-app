@@ -1,23 +1,26 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import MyContext from './contextApi/context';
 
 
 function LoginScreen({socket}) {
 
-    const [username, setUserName] = useState("");
-    const [roomId, setRoomId] = useState("");
+    const {username, setUserName, roomId, setRoomId} = useContext(MyContext);
 
-    const joinToRoom = async (e) => {
+    const joinToRoom = (e) => {
         
         // send room info to backend //
         if(username !== "" && roomId !== ""){
             socket.emit("joining_room", roomId);
             console.log("joining event works...");
         }
-
+        
         e.preventDefault();
     }
 
+
+    
+    
     return (
         <div>
             <form>
@@ -36,5 +39,6 @@ function LoginScreen({socket}) {
         </div>
     )
 }
+
 
 export default LoginScreen

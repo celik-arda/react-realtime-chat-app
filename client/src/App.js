@@ -1,5 +1,8 @@
 import './App.css';
 import io from 'socket.io-client';
+import {useState, useContext} from 'react';
+import {ContextProvider} from './components/contextApi/context';
+
 import LoginScreen from './components/LoginScreen';
 import ChatScreen from './components/ChatScreen';
 
@@ -10,13 +13,15 @@ const socket = io.connect('http://localhost:3001');
 function App() {
 
 
+
     return (
         <div className="App">
-            
-            <LoginScreen socket={socket}/>
-            
-            <ChatScreen/>
 
+            <ContextProvider>
+                <LoginScreen socket={socket}/>
+                <br/>
+                <ChatScreen socket={socket}/>
+            </ContextProvider>
 
         </div>
     );
