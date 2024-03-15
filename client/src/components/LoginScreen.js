@@ -3,15 +3,17 @@ import { useState, useContext } from 'react'
 import MyContext from './contextApi/context';
 
 
+
 function LoginScreen({socket}) {
 
-    const {username, setUserName, roomId, setRoomId} = useContext(MyContext);
+    const {username, setUserName, roomId, setRoomId, LoginDisplay, setLoginDisplay} = useContext(MyContext);
 
     const joinToRoom = (e) => {
         
         // send room info to backend //
         if(username !== "" && roomId !== ""){
             socket.emit("joining_room", roomId);
+            setLoginDisplay(false);
             console.log("joining event works...");
         }
         

@@ -9,6 +9,8 @@ export const ContextProvider = ({children}) => {
     const [username, setUserName] = useState("");
     const [roomId, setRoomId] = useState("");
     const [currentMessage, setCurrentMessage] = useState("");
+    const [messageList, setMessageList] = useState([]);
+    const [loginDisplay, setLoginDisplay] = useState(true);
 
     const myContexts = {
         username,
@@ -16,7 +18,11 @@ export const ContextProvider = ({children}) => {
         roomId,
         setRoomId,
         currentMessage,
-        setCurrentMessage
+        setCurrentMessage,
+        messageList,
+        setMessageList,
+        loginDisplay,
+        setLoginDisplay
     }
 
     return (

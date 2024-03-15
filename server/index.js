@@ -23,7 +23,12 @@ io.on("connection", (socket) => {
     // create an socket event for joining to room
     socket.on("joining_room", (data) => {
         socket.join(data);
-        console.log("DATAAAA : ",data)
+        console.log("room id : ",data)
+    })
+
+    socket.on("sending_message", (data) => {
+        // re-send the message objects and collect in client side with 'recieving_data' event //
+        socket.to(data.roomId).emit("recieving_messages", data);
     })
 
     socket.on("disconnect", ()=> {
