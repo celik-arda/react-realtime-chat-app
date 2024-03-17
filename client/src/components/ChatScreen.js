@@ -1,5 +1,5 @@
 import React from 'react'
-import ChatStyle from './ChatScreen.module.css'
+import ChatCss from './ChatScreen.module.css'
 import { useState, useContext, useEffect } from 'react'
 import MyContext from './contextApi/context';
 
@@ -35,36 +35,34 @@ function ChatScreen({socket}) {
     }, [socket])
 
     return (
-        <div>
-            <div className={ChatStyle.box}>
-                    <div>
-                        <h4>Chat</h4>
+        <div className='chatContainer w-4/12 h-4/6 py-3 flex flex-col gap-y-4'>
+            
+                    <div className='h-1/6 text-center text-3xl'>
+                        <p>Chat</p>
                     </div>
-                    <div className={ChatStyle.messageContainer}>
+                    <div className='h-4/6 p-8 pt-0 flex flex-col overflow-auto gap-y-2'>
                     {
                         messageList.map((data, key) => {
                             return (
-                                <div className={ChatStyle.messageBox} key={key}>
-                                    <div className={ChatStyle.text}>{data.message}</div>
-                                    <div>{data.author}</div>
-                                    <div>{data.time}</div>
+                                <div id={username == data.author ? "myself" : "himself"} className='text-wrap p-1' key={key}>
+                                    <div className='text-wrap h-auto text-xl p-1'><p>{data.message}</p></div>
+                                    <div className='text-md px-1 italic'>{data.author}</div>
+                                    <div className='px-1'>{data.time}</div>
                                 </div>
                             )
                         })
                         
                     }
                     </div>
-                    <div>
-                        <input 
+                    <div className='h-1/6 px-8 flex flex-row justify-stretch'>
+                        <input className='w-auto mr-2'
                         onChange={e => setCurrentMessage(e.target.value)} 
-                        className={ChatStyle.input} 
                         placeholder='type message'/>
-                        <button 
+                        <button className='w-auto' 
                         type="submit" 
                         onClick={sendMessage} 
-                        className={ChatStyle.button}>Send</button>
+                        >Send</button>
                     </div>
-            </div>
         </div>
     )
 }

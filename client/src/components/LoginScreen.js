@@ -1,6 +1,7 @@
 import React from 'react'
-import { useState, useContext } from 'react'
+import { useState, useContext } from 'react';
 import MyContext from './contextApi/context';
+import LoginCss from './LoginScreen.module.css';
 
 
 
@@ -24,18 +25,16 @@ function LoginScreen({socket}) {
     
     
     return (
-        <div>
-            <form>
-                <div>
-                    <input onChange={(e) => setUserName(e.target.value)} className='outline-3 outline-zinc-700 outline' placeholder='your nickname'/>
+        <div className='loginContainer w-4/12 h-3/6 py-12 px-1 '>
+            <form className='w-full h-full flex flex-col items-center justify-stretch'>
+                <div className='h-1/6 mb-6'>
+                    <input className={LoginCss} onChange={(e) => setUserName(e.target.value)} placeholder='your nickname'/>
                 </div>
-                <br/>
-                <div>
-                    <input onChange={(e) => setRoomId(e.target.value)} className='outline-3 outline-zinc-700 outline' placeholder='your room id'/>
+                <div className='h-2/6 mb-3'>
+                    <input  onChange={(e) => setRoomId(e.target.value)} placeholder='your room id'/>
                 </div>
-                <br/>
-                <div>
-                    <button onClick={joinToRoom} className='outline-3 outline-zinc-700 outline'>Login To Room</button>
+                <div className='h-1/6 mt-6'>
+                    <button type='submit' onClick={joinToRoom} >Login To Room</button>
                 </div>
             </form>
         </div>
