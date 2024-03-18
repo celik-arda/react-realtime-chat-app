@@ -1,6 +1,5 @@
 import React from 'react'
-import ChatCss from './ChatScreen.module.css'
-import { useState, useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import MyContext from './contextApi/context';
 
 function ChatScreen({socket}) {
@@ -37,32 +36,38 @@ function ChatScreen({socket}) {
     return (
         <div className='chatContainer w-4/12 h-4/6 py-3 flex flex-col gap-y-4'>
             
-                    <div className='h-1/6 text-center text-3xl'>
-                        <p>Chat</p>
-                    </div>
-                    <div className='h-4/6 p-8 pt-0 flex flex-col overflow-auto gap-y-2'>
-                    {
-                        messageList.map((data, key) => {
-                            return (
-                                <div id={username == data.author ? "myself" : "himself"} className='text-wrap p-1' key={key}>
-                                    <div className='text-wrap h-auto text-xl p-1'><p>{data.message}</p></div>
-                                    <div className='text-md px-1 italic'>{data.author}</div>
-                                    <div className='px-1'>{data.time}</div>
-                                </div>
-                            )
-                        })
-                        
-                    }
-                    </div>
-                    <div className='h-1/6 px-8 flex flex-row justify-stretch'>
-                        <input className='w-auto mr-2'
-                        onChange={e => setCurrentMessage(e.target.value)} 
-                        placeholder='type message'/>
-                        <button className='w-auto' 
-                        type="submit" 
-                        onClick={sendMessage} 
-                        >Send</button>
-                    </div>
+            <div className='h-1/6 text-center text-3xl'>
+                <p>Chat</p>
+            </div>
+            <div className='h-4/6 p-8 pt-0 flex flex-col overflow-auto gap-y-2'>
+            {
+                messageList.map((data, key) => {
+                    return (
+                        <div id={username === data.author ? "myself" : "himself"} 
+                        className='text-wrap p-1' 
+                        key={key}>
+                            <div className='text-wrap h-auto text-xl p-1'>
+                                <p>{data.message}</p>
+                            </div>
+                            <div className='text-md px-1 italic font-bold'>{data.author}</div>
+                            <div className='font-bold px-1'>{data.time}</div>
+                        </div>
+                    )
+                })
+                
+            }
+            </div>
+            <div className='h-1/6 px-8 flex flex-row justify-stretch'>
+                <input className='w-auto mr-2'
+                onChange={e => setCurrentMessage(e.target.value)} 
+                placeholder='type message'/>
+
+                <button className='w-auto' 
+                type="submit" 
+                onClick={sendMessage} 
+                >Send
+                </button>
+            </div>
         </div>
     )
 }

@@ -1,7 +1,6 @@
 import './App.css';
 import io from 'socket.io-client';
-import {useState, useContext} from 'react';
-import {ContextProvider} from './components/contextApi/context';
+import { useContext } from 'react';
 import MyContext from './components/contextApi/context';
 
 import LoginScreen from './components/LoginScreen';
@@ -30,13 +29,13 @@ function App() {
     return (
         <div className="App">
 
-            {/* <ContextProvider> */}
-                {loginDisplay ?
-                    (<LoginScreen socket={socket}/>)
-                    :
-                    (<ChatScreen socket={socket}/>)
-                }
-            {/* </ContextProvider> */}
+            {
+                loginDisplay 
+                ?
+                (<LoginScreen socket={socket}/>)
+                :
+                (<ChatScreen socket={socket}/>)
+            }
 
         </div>
     );
