@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
 .App{
     display: flex;
     justify-content: center;
@@ -47,6 +47,12 @@ button:hover {
     border-radius: 10px;
     background-color: #4361EE;
     box-shadow: 10px 10px 21px black;
+}
+
+.chat-title {
+    font-family: "Madimi One";
+    color: #7209B7;
+    font-size: 45px;
 }
 
 #myself,

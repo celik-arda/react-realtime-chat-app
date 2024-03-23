@@ -34,9 +34,9 @@ function ChatScreen({socket}) {
     }, [socket])
 
     return (
-        <div className='chatContainer w-4/12 h-4/6 py-3 flex flex-col gap-y-4'>
+        <div className='chatContainer w-4/12 h-4/6 py-3 px-4 flex flex-col gap-y-4'>
             
-            <div className='h-1/6 text-center text-3xl'>
+            <div className='chat-title h-1/6 text-center text-3xl'>
                 <p>Chat</p>
             </div>
             <div className='h-4/6 p-8 pt-0 flex flex-col overflow-auto gap-y-2'>
@@ -57,12 +57,12 @@ function ChatScreen({socket}) {
                 
             }
             </div>
-            <div className='h-1/6 px-8 flex flex-row justify-stretch'>
-                <input className='w-auto mr-2'
+            <div className='h-1/6 px-4 flex flex-row justify-stretch'>
+                <input className='w-9/12 mr-2'
                 onChange={e => setCurrentMessage(e.target.value)} 
                 placeholder='type message'/>
 
-                <button className='w-auto' 
+                <button className='w-3/12' 
                 type="submit" 
                 onClick={sendMessage} 
                 >Send
