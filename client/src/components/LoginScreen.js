@@ -14,7 +14,6 @@ function LoginScreen({socket}) {
         if(username !== "" && roomId !== ""){
             socket.emit("joining_room", roomId);
             setLoginDisplay(false);
-            console.log("joining event works...");
         }
         
         e.preventDefault();

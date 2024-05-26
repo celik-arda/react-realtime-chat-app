@@ -22,6 +22,8 @@ function ChatScreen({socket}) {
 
             // keep messages in this state to write on the page //
             setMessageList((prevMessages) => [...prevMessages, messageData]);
+
+            setCurrentMessage("");
         }
     }
 
@@ -58,7 +60,7 @@ function ChatScreen({socket}) {
             }
             </div>
             <div className='h-1/6 px-4 flex flex-row justify-stretch'>
-                <input className='w-9/12 mr-2'
+                <input className='w-9/12 mr-2' value={currentMessage}
                 onChange={e => setCurrentMessage(e.target.value)} 
                 placeholder='type message'/>
 
